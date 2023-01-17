@@ -6,6 +6,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /*
@@ -15,16 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/orderclass")
 public class OrderRestController {
 
   private final OrderRepository orderRepository;
 
-  @GetMapping(value = "/talk/get_order/{id}")
+  @GetMapping(value = "/order/{id}")
   public Order getOrderById(@PathVariable int id) {
     return orderRepository.getOrderById(id);
   }
 
-  @GetMapping(value = "/talk/get_all_orders/")
+  @GetMapping(value = "/orders")
   public List<Order> getAllOrders() {
     return orderRepository.getAllOrders();
   }
